@@ -21,6 +21,7 @@ interface ThemeProviderProps {
 export function ThemeProvider({
   children,
   defaultTheme = "light",
+  attribute = "class",
 }: ThemeProviderProps) {
   const [theme, setTheme] = useState<Theme>(() => {
     if (typeof window !== "undefined") {
@@ -32,18 +33,32 @@ export function ThemeProvider({
 
   useEffect(() => {
     const root = window.document.documentElement;
+    const body = window.document.body;
 
-    requestAnimationFrame(() => {
-      if (theme === "dark") {
-        root.classList.add("dark");
-        root.classList.remove("light");
-      } else {
-        root.classList.add("light");
-        root.classList.remove("dark");
-      }
-      localStorage.setItem("theme", theme);
-    });
-  }, [theme]);
+    // Clear all theme classes
+    root.classList.remove("light", "dark");
+    body.classList.remove("light", "dark");
+
+    // Add the current theme class
+    if (attribute === "class") {
+      root.classList.add(theme);
+      body.classList.add(theme);
+    }
+
+    // Save to localStorage
+    localStorage.setItem("theme", theme);
+  }, [theme, attribute]);
+
+  // Initialize theme on mount
+  useEffect(() => {
+    const root = window.document.documentElement;
+    const body = window.document.body;
+
+    if (attribute === "class") {
+      root.classList.add(theme);
+      body.classList.add(theme);
+    }
+  }, []);
 
   const value = useMemo(
     () => ({

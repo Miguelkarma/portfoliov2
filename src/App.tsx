@@ -1,10 +1,17 @@
 import "@/App.css";
 import { NavLayout } from "./layout/nav-layout";
+import Hero from "./components/hero";
 
 function App() {
   return (
     <>
-      <NavLayout />
+      <div className="container mx-auto">
+        <NavLayout />
+      </div>
+      <div>
+        <Hero />
+        {/* <BeamsBackground intensity="subtle" /> */}
+      </div>
     </>
   );
 }

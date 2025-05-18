@@ -33,12 +33,12 @@ export const ThemeToggle = memo(function ThemeToggle() {
 
   const sunClasses =
     theme === "dark"
-      ? "h-[1.2rem] w-[1.2rem] text-[#A1A1AA] scale-75 rotate-12 transition-transform duration-300"
+      ? "h-[1.2rem] w-[1.2rem] text-muted-foreground scale-75 rotate-12 transition-transform duration-300"
       : "h-[1.2rem] w-[1.2rem] text-foreground scale-100 rotate-0 transition-transform duration-300";
 
   const moonClasses =
     theme === "light"
-      ? "h-[1.2rem] w-[1.2rem] text-[#A1A1AA] scale-75 rotate-12 transition-transform duration-300"
+      ? "h-[1.2rem] w-[1.2rem] text-muted-foreground scale-75 rotate-12 transition-transform duration-300"
       : "h-[1.2rem] w-[1.2rem] text-foreground scale-100 rotate-0 transition-transform duration-300";
 
   return (
