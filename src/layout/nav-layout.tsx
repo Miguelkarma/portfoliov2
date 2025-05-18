@@ -1,4 +1,4 @@
-import { Nav } from "@/elements/nav";
+import { Nav } from "@/components/nav";
 import { ThemeProvider } from "@/elements/theme-provider";
 import "@/App.css";
 

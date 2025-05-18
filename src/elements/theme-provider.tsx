@@ -1,6 +1,6 @@
 "use client";
-import type React from "react";
-import { createContext, useContext, useEffect, useState } from "react";
+import type { ReactNode } from "react";
+import { createContext, useContext, useEffect, useState, useMemo } from "react";
 
 type Theme = "light" | "dark";
 
@@ -12,7 +12,7 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 interface ThemeProviderProps {
-  children: React.ReactNode;
+  children: ReactNode;
   defaultTheme?: Theme;
   attribute?: string;
   disableSystemTheme?: boolean;
@@ -21,28 +21,37 @@ interface ThemeProviderProps {
 export function ThemeProvider({
   children,
   defaultTheme = "light",
-  attribute = "class",
 }: ThemeProviderProps) {
-  const [theme, setTheme] = useState<Theme>(defaultTheme);
+  const [theme, setTheme] = useState<Theme>(() => {
+    if (typeof window !== "undefined") {
+      const savedTheme = localStorage.getItem("theme") as Theme;
+      return savedTheme || defaultTheme;
+    }
+    return defaultTheme;
+  });
 
   useEffect(() => {
     const root = window.document.documentElement;
 
-    // Remove the old theme
-    root.classList.remove("light", "dark");
+    requestAnimationFrame(() => {
+      if (theme === "dark") {
+        root.classList.add("dark");
+        root.classList.remove("light");
+      } else {
+        root.classList.add("light");
+        root.classList.remove("dark");
+      }
+      localStorage.setItem("theme", theme);
+    });
+  }, [theme]);
 
-    // Add the new theme
-    if (attribute === "class") {
-      root.classList.add(theme);
-    } else {
-      root.setAttribute(attribute, theme);
-    }
-  }, [theme, attribute]);
-
-  const value = {
-    theme,
-    setTheme: (newTheme: Theme) => setTheme(newTheme),
-  };
+  const value = useMemo(
+    () => ({
+      theme,
+      setTheme: (newTheme: Theme) => setTheme(newTheme),
+    }),
+    [theme]
+  );
 
   return (
     <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
