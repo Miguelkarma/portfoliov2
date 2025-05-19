@@ -7,13 +7,16 @@ import Experience from "./components/experience";
 function App() {
   return (
     <>
-      <div className="container mx-auto">
+      <div className="bg-grid"></div>
+      <div className="container mx-auto ">
         <NavLayout />
       </div>
-      <div>
+      <div className="">
         <Hero />
         <AboutMe />
-        <Experience />
+        <div>
+          <Experience />
+        </div>
       </div>
     </>
   );

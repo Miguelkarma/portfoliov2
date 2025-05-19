@@ -2,10 +2,10 @@ import profile from "@/assets/profile.jpg";
 
 export default function AboutMe() {
   return (
-    <div className="bg-transparent text-white min-h-screen p-8 mt-30 relative">
-      <div className="absolute inset-0 overflow-hidden pointer-events-none ">
+    <div className="bg-transparent text-white p-8 mt-30 relative ">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none min-h-screen ">
         <svg
-          className="absolute md:top-60 lg:top-25   left-0 w-full h-full"
+          className="absolute md:top-60 lg:top-20   left-0 w-full h-full"
           viewBox="0 0 1000 800"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -59,7 +59,7 @@ export default function AboutMe() {
       </div>
 
       <div className="max-w-6xl mx-auto relative z-10">
-        <div className="flex flex-col lg:flex-row gap-12 items-start md:items-center">
+        <div className="flex flex-col lg:flex-row gap-12 items-start md:items-center sm:items-center">
           {/* Content Section */}
           <div className="flex-1 space-y-6">
             <h1 className="text-4xl font-bold mb-8">
@@ -79,11 +79,11 @@ export default function AboutMe() {
               <p>
                 Over time, I've worked on several personal and academic
                 projects, including an{" "}
-                <span className="text-dev">
+                <span className="text-teal-600">
                   IT Equipment Asset Management system
                 </span>{" "}
                 and a{" "}
-                <span className="text-dev">
+                <span className="text-teal-600">
                   Veterinary Clinic Management app
                 </span>
                 . These projects helped me gain hands-on experience in both
@@ -92,12 +92,12 @@ export default function AboutMe() {
 
               <p>
                 My current focus is on developing modern, responsive web apps
-                using <span className="text-dev">React</span>,{" "}
-                <span className="text-dev">Firebase</span>, and{" "}
-                <span className="text-dev">Tailwind CSS</span>. I'm also
+                using <span className="text-teal-600">React</span>,{" "}
+                <span className="text-teal-600">Firebase</span>, and{" "}
+                <span className="text-teal-600">Tailwind CSS</span>. I'm also
                 exploring new technologies like{" "}
-                <span className="text-dev">TypeScript </span>and external APIs
-                to expand my skills and build more advanced features.
+                <span className="text-teal-600">TypeScript </span>and external
+                APIs to expand my skills and build more advanced features.
               </p>
             </div>
           </div>

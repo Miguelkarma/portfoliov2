@@ -28,7 +28,7 @@ export default function SectionHeading({
         </p>
       )}
       <motion.div
-        className="h-1 w-24 bg-gradient-to-r from-indigo-500 to-teal-300 rounded-full mx-auto mt-4"
+        className="h-0.5 w-32 bg-gradient-to-r from-indigo-300 to-teal-700 rounded-full mx-auto mt-4"
         initial={{ width: 0 }}
         whileInView={{ width: 96 }}
         viewport={{ once: true }}
