@@ -1,6 +1,7 @@
 import "@/App.css";
 import { NavLayout } from "./layout/nav-layout";
 import Hero from "./components/hero";
+import AboutMe from "./components/about-me";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       </div>
       <div>
         <Hero />
+        <AboutMe />
       </div>
     </>
   );
