@@ -25,6 +25,8 @@
   --color-logo: hsl(var(--logo));
   --color-glow1: hsl(var(--glow1));
   --color-glow2: hsl(var(--glow2));
+  --color-dev: hsl(var(--dev));
+  --color-dev2: hsl(var(--dev2));
 }
 
 :root {
@@ -58,8 +60,10 @@
 
   --radius: 0.5rem;
   --logo: 180 70% 35%;
-  --glow1: 180 70% 35%;
-  --glow2: 222.2 84% 4.9%;
+  --glow1: 240 80% 30%;
+  --glow2: 190 100% 50%;
+  --dev: 268 93% 30%;
+  --dev2: 172 76% 60%;
 }
 
 .dark {
@@ -72,7 +76,7 @@
   --popover: 222.2 84% 4.9%;
   --popover-foreground: 210 40% 98%;
 
-  --primary: 210 40% 98%;
+  --primary: 200 60% 90%;
   --primary-foreground: 222.2 47.4% 11.2%;
 
   --secondary: 217.2 32.6% 17.5%;
@@ -90,9 +94,11 @@
   --border: 217.2 32.6% 17.5%;
   --input: 217.2 32.6% 17.5%;
   --ring: 212.7 26.8% 83.9%;
-  --logo: 180 60% 70%;
-  --glow1: 170 72% 40%;
-  --glow2: 198 93% 72%;
+  --logo: 180 60% 80%;
+  --glow1: 245 60% 40%;
+  --glow2: 170 90% 55%;
+  --dev: 268 93% 80%;
+  --dev2: 172 76% 30%;
 }
 
 * {
