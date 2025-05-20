@@ -6,6 +6,7 @@ import Experience from "./components/experience";
 import ProjectShowcase from "./components/project-showcase";
 import Certifications from "./components/certifications";
 import Contact from "./components/contact";
+import Footer from "./components/footer";
 
 function App() {
   return (
@@ -14,14 +15,15 @@ function App() {
       <div className="container mx-auto ">
         <NavLayout />
       </div>
-      <div className="">
+      <main>
         <Hero />
         <AboutMe />
         <Experience />
         <ProjectShowcase />
         <Certifications />
         <Contact />
-      </div>
+        <Footer />
+      </main>
     </>
   );
 }
