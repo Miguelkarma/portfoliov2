@@ -73,7 +73,7 @@ export const projects: ProjectType[] = [
     github: "https://github.com/Miguelkarma/calorieCalc",
     live: "http://caloriecalc.miguelkarma.rf.gd/?i=1",
     overlayTitle: "CalorieCalc",
-    overlayDescription: "Short description for Project Three overlay.",
+    overlayDescription: "Calorie Calculator and Calorie Tracker",
   },
 ];
 
