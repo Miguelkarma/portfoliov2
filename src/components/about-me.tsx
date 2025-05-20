@@ -2,7 +2,6 @@ import profile from "@/assets/profile.jpg";
 import { Badge } from "@/components/ui/badge";
 
 export default function AboutMe() {
-  // Define skills by category
   const skills = {
     languages: [
       { name: "JavaScript", color: "bg-yellow-600" },

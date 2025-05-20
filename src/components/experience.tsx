@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Briefcase, Calendar, MapPin, Zap } from "lucide-react";
-import SectionHeading from "../elements/SectionHeading";
+import SectionHeading from "@/elements/SectionHeading";
 
 export default function Experience() {
   const experiences = [
