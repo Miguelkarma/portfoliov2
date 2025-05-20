@@ -1,12 +1,12 @@
 import "@/App.css";
 import { NavLayout } from "./layout/nav-layout";
-import Hero from "./components/hero";
-import AboutMe from "./components/about-me";
-import Experience from "./components/experience";
-import ProjectShowcase from "./components/project-showcase";
-import Certifications from "./components/certifications";
-import Contact from "./components/contact";
-import Footer from "./components/footer";
+import Hero from "@/components/hero";
+import AboutMe from "@/components/about-me";
+import Experience from "@/components/experience";
+import ProjectShowcase from "@/components/project-showcase";
+import Certifications from "@/components/certifications";
+import Contact from "@/components/contact";
+import Footer from "@/components/footer";
 
 function App() {
   return (
