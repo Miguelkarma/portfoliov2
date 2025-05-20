@@ -1,63 +1,43 @@
 import profile from "@/assets/profile.jpg";
+import { Badge } from "@/components/ui/badge";
 
 export default function AboutMe() {
+  // Define skills by category
+  const skills = {
+    languages: [
+      { name: "JavaScript", color: "bg-yellow-600" },
+      { name: "TypeScript", color: "bg-blue-700" },
+      { name: "HTML", color: "bg-orange-600" },
+      { name: "CSS", color: "bg-blue-500" },
+      { name: "PHP", color: "bg-indigo-500" },
+    ],
+    frontend: [
+      { name: "React", color: "bg-cyan-600" },
+      { name: "Tailwind CSS", color: "bg-cyan-800" },
+      { name: "Vite", color: "bg-teal-600" },
+      { name: "Bootstrap", color: "bg-purple-600" },
+      { name: "shadcn/ui", color: "bg-gray-950" },
+    ],
+    backend: [
+      { name: "Firebase", color: "bg-amber-600" },
+      { name: "Node.js", color: "bg-green-600" },
+      { name: "Express", color: "bg-gray-600" },
+    ],
+    tools: [
+      { name: "Git", color: "bg-red-500" },
+      { name: "GitHub", color: "bg-black" },
+      { name: "BitBucket", color: "bg-sky-700" },
+      { name: "Figma", color: "bg-purple-500" },
+      { name: "VS Code", color: "bg-blue-600" },
+      { name: "Vercel", color: "bg-gray-800" },
+      { name: "Xampp", color: "bg-yellow-700" },
+      { name: "Laragon", color: "bg-indigo-600" },
+      { name: "Composer", color: "bg-amber-800" },
+    ],
+  };
+
   return (
-    <div className="bg-transparent text-white p-8 mt-30 relative ">
-      <div className="absolute inset-0 overflow-hidden pointer-events-none min-h-screen ">
-        <svg
-          className="absolute md:top-60 lg:top-20   left-0 w-full h-full"
-          viewBox="0 0 1000 800"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M-100 400 Q200 300 400 400 T800 350 Q900 380 1100 400"
-            stroke="url(#gradient)"
-            strokeWidth="3"
-            fill="none"
-            className="opacity-100"
-          />
-
-          <circle
-            cx="150"
-            cy="380"
-            r="4"
-            fill="#ff6b9d"
-            className="opacity-80"
-          />
-          <circle
-            cx="600"
-            cy="360"
-            r="3"
-            fill="#ff6b9d"
-            className="opacity-60"
-          />
-          <circle
-            cx="850"
-            cy="390"
-            r="2"
-            fill="#ff6b9d"
-            className="opacity-40"
-          />
-
-          <g transform="translate(300, 420)">
-            <path
-              d="M0,-8 L2.4,-2.4 L8,0 L2.4,2.4 L0,8 L-2.4,2.4 L-8,0 L-2.4,-2.4 Z"
-              fill="#ff6b9d"
-              className="opacity-70"
-            />
-          </g>
-
-          <defs>
-            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#1f7373" stopOpacity="0.8" />
-              <stop offset="50%" stopColor="#9f75fa" stopOpacity="0.6" />
-              <stop offset="100%" stopColor="#70e0e0" stopOpacity="0.4" />
-            </linearGradient>
-          </defs>
-        </svg>
-      </div>
-
+    <div className="bg-transparent text-white p-8 mt-30 relative">
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="flex flex-col lg:flex-row gap-12 items-start md:items-center sm:items-center">
           {/* Content Section */}
@@ -99,6 +79,83 @@ export default function AboutMe() {
                 <span className="text-teal-600">TypeScript </span>and external
                 APIs to expand my skills and build more advanced features.
               </p>
+            </div>
+
+            {/* Skills Section with badges */}
+            <div className="mt-8">
+              <h2 className="text-2xl font-semibold mb-4 text-transparent bg-clip-text bg-gradient-to-br from-dev to-dev2">
+                Skills & Technologies
+              </h2>
+
+              <div className="space-y-4">
+                {/* Languages */}
+                <div>
+                  <h3 className="text-lg font-medium mb-2 text-gray-300">
+                    Languages
+                  </h3>
+                  <div className="flex flex-wrap gap-2">
+                    {skills.languages.map((skill, index) => (
+                      <Badge
+                        key={index}
+                        className={`${skill.color} hover:${skill.color} text-white`}
+                      >
+                        {skill.name}
+                      </Badge>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Frontend */}
+                <div>
+                  <h3 className="text-lg font-medium mb-2 text-gray-300">
+                    Frontend
+                  </h3>
+                  <div className="flex flex-wrap gap-2">
+                    {skills.frontend.map((skill, index) => (
+                      <Badge
+                        key={index}
+                        className={`${skill.color} hover:${skill.color} text-white`}
+                      >
+                        {skill.name}
+                      </Badge>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Backend */}
+                <div>
+                  <h3 className="text-lg font-medium mb-2 text-gray-300">
+                    Backend
+                  </h3>
+                  <div className="flex flex-wrap gap-2">
+                    {skills.backend.map((skill, index) => (
+                      <Badge
+                        key={index}
+                        className={`${skill.color} hover:${skill.color} text-white`}
+                      >
+                        {skill.name}
+                      </Badge>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Tools */}
+                <div>
+                  <h3 className="text-lg font-medium mb-2 text-gray-300">
+                    Tools
+                  </h3>
+                  <div className="flex flex-wrap gap-2">
+                    {skills.tools.map((skill, index) => (
+                      <Badge
+                        key={index}
+                        className={`${skill.color} hover:${skill.color} text-white`}
+                      >
+                        {skill.name}
+                      </Badge>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
