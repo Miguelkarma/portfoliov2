@@ -30,6 +30,7 @@
 }
 
 :root {
+  --breakpoint-md: 1090px;
   --background: 0 0% 95%;
 
   --foreground: 222.2 84% 4.9%;
@@ -71,8 +72,8 @@
   --background: 222.2 84% 4.9%;
   --foreground: 210 40% 98%;
 
-  --card: 222.2 60% 9%;
-  --card-foreground: 210 40% 98%;
+  --card: 222.2 60% 10%;
+  --card-foreground: 215, 55%, 13%;
 
   --popover: 222.2 84% 4.9%;
   --popover-foreground: 210 40% 98%;

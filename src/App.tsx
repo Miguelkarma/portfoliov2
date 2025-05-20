@@ -4,6 +4,7 @@ import Hero from "./components/hero";
 import AboutMe from "./components/about-me";
 import Experience from "./components/experience";
 import ProjectShowcase from "./components/project-showcase";
+import Certifications from "./components/certifications";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <AboutMe />
         <Experience />
         <ProjectShowcase />
+        <Certifications />
       </div>
     </>
   );

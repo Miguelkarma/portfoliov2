@@ -1,4 +1,4 @@
-import { Home, User, Info, Briefcase, FolderGit } from "lucide-react";
+import { Home, User, Info, Briefcase, FolderGit, Mail } from "lucide-react";
 
 export type ProjectType = {
   title: string;
@@ -10,6 +10,12 @@ export type ProjectType = {
   overlayTitle: string;
   overlayDescription: string;
 };
+
+import cert1 from "@/assets/certs/cert1.jpg";
+import cert2 from "@/assets/certs/cert2.jpg";
+import cert3 from "@/assets/certs/cert3.jpg";
+import cert4 from "@/assets/certs/cert4.jpg";
+import udemy from "@/assets/udemy-logo.jpg";
 
 export const projects: ProjectType[] = [
   {
@@ -204,51 +210,68 @@ export const menuItems: MenuItemType[] = [
   },
   {
     icon: <User className="h-4 w-4 sm:h-5 sm:w-5" />,
-    label: "Resume",
-    href: "#",
+    label: "Certifications",
+    href: "certs",
+    gradient:
+      "radial-gradient(circle, rgba(239,68,68,0.15) 0%, rgba(220,38,38,0.06) 50%, rgba(185,28,28,0) 100%)",
+  },
+  {
+    icon: <Mail className="h-4 w-4 sm:h-5 sm:w-5" />,
+    label: "Contact Me",
+    href: "contact",
     gradient:
       "radial-gradient(circle, rgba(239,68,68,0.15) 0%, rgba(220,38,38,0.06) 50%, rgba(185,28,28,0) 100%)",
   },
 ];
 
-// Animation variants for NavBar and Menu Items
-export const itemVariants = {
-  initial: { rotateX: 0, opacity: 1 },
-  hover: { rotateX: -90, opacity: 0 },
-};
-
-export const backVariants = {
-  initial: { rotateX: 90, opacity: 0 },
-  hover: { rotateX: 0, opacity: 1 },
-};
-
-export const glowVariants = {
-  initial: { opacity: 0, scale: 0.8 },
-  hover: {
-    opacity: 1,
-    scale: 2,
-    transition: {
-      opacity: { duration: 0.5, ease: [0.4, 0, 0.2, 1] },
-      scale: { duration: 0.5, type: "spring", stiffness: 300, damping: 25 },
+// certifications
+export const certifications = [
+  {
+    id: 1,
+    image: cert1,
+    title: "Web Development Bootcamp",
+    description:
+      "Comprehensive web development course covering HTML, CSS, JavaScript, React, Node.js, and MongoDB.",
+    author: {
+      name: "Udemy",
+      avatar: udemy,
+      date: "Oct 13, 2024",
     },
   },
-};
-
-export const navGlowVariants = {
-  initial: { opacity: 0 },
-  hover: {
-    opacity: 1,
-    transition: {
-      duration: 0.5,
-      ease: [0.4, 0, 0.2, 1],
+  {
+    id: 2,
+    image: cert2,
+    title: "Advanced JavaScript",
+    description:
+      "Deep dive into JavaScript concepts including closures, prototypes, async/await, and ES6+ features.",
+    author: {
+      name: "Udemy",
+      avatar: udemy,
+      date: "Oct 18, 2024",
     },
   },
-};
-
-export const sharedTransition = {
-  type: "spring",
-  stiffness: 100,
-  damping: 20,
-  duration: 0.5,
-  willChange: "transform, opacity",
-};
+  {
+    id: 3,
+    image: cert3,
+    title: "React Masterclass",
+    description:
+      "Complete guide to building modern web applications with React",
+    author: {
+      name: "Udemy",
+      avatar: udemy,
+      date: "Oct 23, 2024",
+    },
+  },
+  {
+    id: 4,
+    image: cert4,
+    title: "JavaScript & PHP Complete Course",
+    description:
+      "Master front-end and back-end development with this complete JavaScript and PHP course",
+    author: {
+      name: "Udemy",
+      avatar: udemy,
+      date: "Oct 31, 2024",
+    },
+  },
+];

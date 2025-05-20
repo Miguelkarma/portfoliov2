@@ -6,16 +6,14 @@ import { useTheme } from "@/elements/theme-provider";
 import { ThemeToggle } from "@/elements/theme-toggle";
 import { MobileMenu } from "@/elements/mobile-menu";
 import logo from "@/assets/logo.png";
-
 import {
-  menuItems,
   itemVariants,
   backVariants,
   glowVariants,
   navGlowVariants,
   sharedTransition,
-  type MenuItemType,
-} from "@/elements/constants";
+} from "@/animation/motion-variant";
+import { menuItems, type MenuItemType } from "@/elements/constants";
 
 interface MenuItemProps {
   item: MenuItemType;
@@ -25,26 +23,23 @@ const MenuItem = React.memo(({ item }: MenuItemProps) => {
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
 
-    // Get the target element from the href (remove the # from the href)
     const targetId = item.href.replace("#", "");
     const targetElement = document.getElementById(targetId);
 
     if (targetElement) {
-      // Smooth scroll to the element
       targetElement.scrollIntoView({
         behavior: "smooth",
         block: "start",
       });
 
-      // Optionally update URL hash without jumping
       window.history.pushState(null, "", item.href);
     }
   };
 
   return (
-    <motion.li className="relative flex-shrink-0">
+    <motion.li className="relative flex-shrink-0 ">
       <motion.div
-        className="block rounded-lg sm:rounded-xl group relative"
+        className="block rounded-lg sm:rounded-xl group relative w-full"
         style={{ perspective: "600px" }}
         whileHover="hover"
         initial="initial"
@@ -72,7 +67,7 @@ const MenuItem = React.memo(({ item }: MenuItemProps) => {
             willChange: "transform, opacity",
           }}
         >
-          <span className="transition-colors duration-300 text-foreground">
+          <span className="hidden xl:inline transition-colors duration-300 text-foreground">
             {item.icon}
           </span>
           <span className="hidden xs:inline lg:inline whitespace-nowrap">

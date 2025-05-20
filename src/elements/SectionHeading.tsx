@@ -1,7 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
-
 interface SectionHeadingProps {
   title: string;
   subtitle?: string;
@@ -12,28 +10,16 @@ export default function SectionHeading({
   subtitle,
 }: SectionHeadingProps) {
   return (
-    <motion.div
-      className="mb-16 text-center relative"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5 }}
-    >
+    <div className="mb-16 text-center relative">
       <h2 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-dev to-dev2 inline-block font-display">
         {title}
       </h2>
+      <p className="mt-1 text-muted">My completed courses and qualifications</p>
       {subtitle && (
         <p className="text-xl text-slate-400 mt-4 max-w-2xl mx-auto">
           {subtitle}
         </p>
       )}
-      <motion.div
-        className="h-0.5 w-32 bg-gradient-to-r from-indigo-300 to-teal-700 rounded-full mx-auto mt-4"
-        initial={{ width: 0 }}
-        whileInView={{ width: 96 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: 0.2 }}
-      />
-    </motion.div>
+    </div>
   );
 }
