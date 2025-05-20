@@ -4,7 +4,7 @@ import { Badge } from "@/components/ui/badge";
 
 export default function AboutMe() {
   return (
-    <div className="bg-transparent text-white p-8 mt-30 relative">
+    <div className="bg-transparent text-white p-8 mt-35 relative" id="about-me">
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="flex flex-col lg:flex-row gap-12 items-start md:items-center sm:items-center">
           {/* Content Section */}

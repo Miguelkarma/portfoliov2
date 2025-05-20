@@ -22,6 +22,25 @@ interface MenuItemProps {
 }
 
 const MenuItem = React.memo(({ item }: MenuItemProps) => {
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+
+    // Get the target element from the href (remove the # from the href)
+    const targetId = item.href.replace("#", "");
+    const targetElement = document.getElementById(targetId);
+
+    if (targetElement) {
+      // Smooth scroll to the element
+      targetElement.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+
+      // Optionally update URL hash without jumping
+      window.history.pushState(null, "", item.href);
+    }
+  };
+
   return (
     <motion.li className="relative flex-shrink-0">
       <motion.div
@@ -43,6 +62,7 @@ const MenuItem = React.memo(({ item }: MenuItemProps) => {
         />
         <motion.a
           href={item.href}
+          onClick={handleClick}
           className="flex items-center gap-1 sm:gap-2 px-2 py-1.5 sm:px-4 sm:py-2 relative z-10 bg-transparent text-muted-foreground group-hover:text-foreground transition-colors rounded-lg sm:rounded-xl text-xs sm:text-sm"
           variants={itemVariants}
           transition={sharedTransition}
@@ -61,6 +81,7 @@ const MenuItem = React.memo(({ item }: MenuItemProps) => {
         </motion.a>
         <motion.a
           href={item.href}
+          onClick={handleClick}
           className="flex items-center gap-1 sm:gap-2 px-2 py-1.5 sm:px-4 sm:py-2 absolute inset-0 z-10 bg-transparent text-muted-foreground group-hover:text-foreground transition-colors rounded-lg sm:rounded-xl text-xs sm:text-sm"
           variants={backVariants}
           transition={sharedTransition}

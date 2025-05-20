@@ -1,4 +1,4 @@
-import { Home, Settings, Bell, User } from "lucide-react";
+import { Home, User, Info, Briefcase, FolderGit } from "lucide-react";
 
 export type ProjectType = {
   title: string;
@@ -27,6 +27,7 @@ export const projects: ProjectType[] = [
       "Git",
       "Jest",
       "REST API",
+      "Styled Components",
     ],
     github: "https://github.com/Miguelkarma/Flux",
     live: "https://flux-omega-ten.vercel.app/",
@@ -176,28 +177,28 @@ export const menuItems: MenuItemType[] = [
   {
     icon: <Home className="h-4 w-4 sm:h-5 sm:w-5" />,
     label: "Home",
-    href: "#",
+    href: "#home",
     gradient:
       "radial-gradient(circle, rgba(59,130,246,0.15) 0%, rgba(37,99,235,0.06) 50%, rgba(29,78,216,0) 100%)",
   },
   {
-    icon: <Bell className="h-4 w-4 sm:h-5 sm:w-5" />,
-    label: "Notifications",
-    href: "#",
+    icon: <Info className="h-4 w-4 sm:h-5 sm:w-5" />,
+    label: "About Me",
+    href: "#about-me",
     gradient:
       "radial-gradient(circle, rgba(249,115,22,0.15) 0%, rgba(234,88,12,0.06) 50%, rgba(194,65,12,0) 100%)",
   },
   {
-    icon: <Settings className="h-4 w-4 sm:h-5 sm:w-5" />,
-    label: "Settings",
-    href: "#",
+    icon: <Briefcase className="h-4 w-4 sm:h-5 sm:w-5" />,
+    label: "Experience",
+    href: "#experience",
     gradient:
       "radial-gradient(circle, rgba(34,197,94,0.15) 0%, rgba(22,163,74,0.06) 50%, rgba(21,128,61,0) 100%)",
   },
   {
-    icon: <User className="h-4 w-4 sm:h-5 sm:w-5" />,
-    label: "Profile",
-    href: "#",
+    icon: <FolderGit className="h-4 w-4 sm:h-5 sm:w-5" />,
+    label: "Projects",
+    href: "#projects",
     gradient:
       "radial-gradient(circle, rgba(239,68,68,0.15) 0%, rgba(220,38,38,0.06) 50%, rgba(185,28,28,0) 100%)",
   },

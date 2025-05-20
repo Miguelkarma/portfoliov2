@@ -3,8 +3,8 @@ import HeroButton from "@/components/ui/get-started-btn";
 export default function HeroSection() {
   return (
     <>
-      <main>
-        <section className="relative bg-transparent pt-32 lg:pt-24 pb-32 lg:pb-24 ">
+      <main id="home">
+        <section className="relative bg-transparent pt-32 lg:pt-48 pb-32 lg:pb-24 ">
           <p className=" text-sm uppercase tracking-wider bg-transparent border text-primary max-w-max mx-auto px-3 py-1 rounded-full border-t border-blue-500/10 backdrop-blur-2xl  mb-1 before:absolute before:left-1/2 before:translate-x-[-50%] before:bottom-[-1px] before:w-[66%] before:h-[1px] before:bg-gradient-to-r before:from-transparent before:via-logo before:to-transparent before:rounded-full">
             Hi! My Name is
           </p>

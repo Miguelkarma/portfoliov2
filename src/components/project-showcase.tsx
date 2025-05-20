@@ -19,7 +19,7 @@ export default function ProjectShowcase() {
 
   return (
     <div className="bg-transparent text-white py-50">
-      <div className="max-w-6xl mx-auto px-4">
+      <div className="max-w-6xl mx-auto px-4" id="projects">
         <div className="flex items-center mb-6">
           <div className="h-px bg-logo flex-grow  "></div>
           <div className=" p-3 rounded-full border !border-cyan-700 ">
