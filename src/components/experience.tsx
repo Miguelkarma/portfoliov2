@@ -3,34 +3,9 @@
 import { motion } from "framer-motion";
 import { Briefcase, Calendar, MapPin, Zap } from "lucide-react";
 import SectionHeading from "@/elements/SectionHeading";
+import { experiences } from "@/elements/constants";
 
 export default function Experience() {
-  const experiences = [
-    {
-      period: "January 2025 - April 2025",
-      role: "Front-End Developer Intern",
-      company: "Toro Cloud Philippines Pty Ltd ( lonti )",
-      color: "teal",
-      projects: [
-        {
-          title: "🔧 Full-Stack Development Training",
-          description:
-            "Participated in a structured internship program at Toro Cloud, studying JavaScript fundamentals along with hands-on training in React, TypeScript, Tailwind CSS, Firebase, Node.js, Express, Playwright and Jest.",
-        },
-        {
-          title: "💻 Internship Project",
-          description:
-            "Designed and developed a full-stack asset tracking system with QR-based asset monitoring. Implemented CRUD operations for assets and employees using Firebase Firestore, ensuring real-time data handling.",
-        },
-        {
-          title: "🚀 Deployment & Testing",
-          description:
-            "Deployed the application on Vercel with performance optimizations. Integrated third-party APIs to enhance system features and implemented comprehensive test coverage using Jest to ensure application reliability.",
-        },
-      ],
-    },
-  ];
-
   return (
     <>
       <div className="mx-auto lg:max-w-7xl w-full px-5 sm:px-10 md:px-12 lg:px-5 relative">
@@ -50,30 +25,12 @@ export default function Experience() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                {/* Timeline connector */}
-                {/* Uncomment these when the object is 2 or more */}
-                {/* {index < experiences.length - 1 && ( */}
-                <div className="absolute top-16 bottom-0 left-8 w-0.5 bg-gradient-to-b from-teal-500 to-blue-500">
-                  <motion.div
-                    className="absolute top-0 left-1/2 transform -translate-x-1/2 w-3 h-3 rounded-full bg-logo"
-                    animate={{
-                      y: [0, 100, 200, 300, 400, 500, 0],
-                      opacity: [1, 0.8, 0.6, 0.4, 0.2, 0, 0],
-                    }}
-                    transition={{
-                      duration: 2,
-                      repeat: Infinity,
-                      ease: "linear",
-                    }}
-                  />
-                </div>
-                {/* )} */}
+                <div className="absolute top-16 bottom-0 left-8 w-0.5 bg-gradient-to-b from-teal-500 to-blue-500"></div>
 
                 <div className="flex items-start">
-                  {/* Timeline dot */}
                   <div className="relative">
-                    <div className="w-16 h-16 rounded-full bg-transparent flex items-center justify-center z-10 relative border !border-teal-500/100">
-                      <Briefcase className={`w-8 h-8 text-${exp.color}-400`} />
+                    <div className="w-16 h-16 rounded-full bg-gradient-to-b from-teal-500 to-blue-500 flex items-center justify-center z-10 relative border !border-teal-500/100">
+                      <Briefcase className={`w-8 h-8 text-white`} />
                     </div>
                   </div>
 
@@ -81,7 +38,7 @@ export default function Experience() {
                   <div className="ml-8 bg-card backdrop-blur-md p-6 rounded-2xl border border-indigo-500/20 flex-1">
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                       <h3 className="text-2xl font-bold text-white flex items-center gap-2 font-display">
-                        <Zap className={`w-5 h-5 text-${exp.color}-400`} />
+                        <Zap className={`w-5 h-5 text-cyan-300`} />
                         {exp.role}
                       </h3>
                       <div className="flex items-center text-teal-400 mt-2 md:mt-0">

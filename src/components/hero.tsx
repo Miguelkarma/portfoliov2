@@ -14,7 +14,7 @@ export default function HeroSection() {
             <div className="flex text-center lg:text-left flex-col lg:items-center lg:flex-row gap-8 lg:gap-10 xl:gap-12 relative max-w-4xl lg:max-w-none">
               <div className="space-y-8 xl:space-y-10 lg:py-12 flex-1 lg:w-1/2">
                 <h1 className="text-foreground text-3xl sm:text-4xl md:text-5xl xl:text-6xl leading-tight font-bold">
-                  Paul Miguel Santos Web Developer{" "}
+                  Paul Miguel Santos Web{" "}
                   <span className="text-transparent bg-clip-text bg-gradient-to-br from-dev to-dev2">
                     Developer
                   </span>{" "}

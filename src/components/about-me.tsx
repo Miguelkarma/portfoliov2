@@ -1,40 +1,8 @@
+import { skills } from "@/elements/constants";
 import profile from "@/assets/profile.jpg";
 import { Badge } from "@/components/ui/badge";
 
 export default function AboutMe() {
-  const skills = {
-    languages: [
-      { name: "JavaScript", color: "bg-yellow-600" },
-      { name: "TypeScript", color: "bg-blue-700" },
-      { name: "HTML", color: "bg-orange-600" },
-      { name: "CSS", color: "bg-blue-500" },
-      { name: "PHP", color: "bg-indigo-500" },
-    ],
-    frontend: [
-      { name: "React", color: "bg-cyan-600" },
-      { name: "Tailwind CSS", color: "bg-cyan-800" },
-      { name: "Vite", color: "bg-teal-600" },
-      { name: "Bootstrap", color: "bg-purple-600" },
-      { name: "shadcn/ui", color: "bg-gray-950" },
-    ],
-    backend: [
-      { name: "Firebase", color: "bg-amber-600" },
-      { name: "Node.js", color: "bg-green-600" },
-      { name: "Express", color: "bg-gray-600" },
-    ],
-    tools: [
-      { name: "Git", color: "bg-red-500" },
-      { name: "GitHub", color: "bg-black" },
-      { name: "BitBucket", color: "bg-sky-700" },
-      { name: "Figma", color: "bg-purple-500" },
-      { name: "VS Code", color: "bg-blue-600" },
-      { name: "Vercel", color: "bg-gray-800" },
-      { name: "Xampp", color: "bg-yellow-700" },
-      { name: "Laragon", color: "bg-indigo-600" },
-      { name: "Composer", color: "bg-amber-800" },
-    ],
-  };
-
   return (
     <div className="bg-transparent text-white p-8 mt-30 relative">
       <div className="max-w-6xl mx-auto relative z-10">
@@ -86,12 +54,10 @@ export default function AboutMe() {
                 Skills & Technologies
               </h2>
 
-              <div className="space-y-4">
+              <div className="space-y-4 text-secondary-foreground">
                 {/* Languages */}
                 <div>
-                  <h3 className="text-lg font-medium mb-2 text-gray-300">
-                    Languages
-                  </h3>
+                  <h3 className="text-lg font-medium mb-2 ">Languages</h3>
                   <div className="flex flex-wrap gap-2">
                     {skills.languages.map((skill, index) => (
                       <Badge
@@ -106,9 +72,7 @@ export default function AboutMe() {
 
                 {/* Frontend */}
                 <div>
-                  <h3 className="text-lg font-medium mb-2 text-gray-300">
-                    Frontend
-                  </h3>
+                  <h3 className="text-lg font-medium mb-2 ">Frontend</h3>
                   <div className="flex flex-wrap gap-2">
                     {skills.frontend.map((skill, index) => (
                       <Badge
@@ -123,9 +87,7 @@ export default function AboutMe() {
 
                 {/* Backend */}
                 <div>
-                  <h3 className="text-lg font-medium mb-2 text-gray-300">
-                    Backend
-                  </h3>
+                  <h3 className="text-lg font-medium mb-2 ">Backend</h3>
                   <div className="flex flex-wrap gap-2">
                     {skills.backend.map((skill, index) => (
                       <Badge
@@ -140,9 +102,7 @@ export default function AboutMe() {
 
                 {/* Tools */}
                 <div>
-                  <h3 className="text-lg font-medium mb-2 text-gray-300">
-                    Tools
-                  </h3>
+                  <h3 className="text-lg font-medium mb-2 ">Tools</h3>
                   <div className="flex flex-wrap gap-2">
                     {skills.tools.map((skill, index) => (
                       <Badge

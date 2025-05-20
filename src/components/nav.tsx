@@ -2,100 +2,26 @@
 
 import * as React from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { Home, Settings, Bell, User } from "lucide-react";
 import { useTheme } from "@/elements/theme-provider";
 import { ThemeToggle } from "@/elements/theme-toggle";
 import { MobileMenu } from "@/elements/mobile-menu";
 import logo from "@/assets/logo.png";
-import { useMemo } from "react";
 
-interface MenuItem {
-  icon: React.ReactNode;
-  label: string;
-  href: string;
-  gradient: string;
+import {
+  menuItems,
+  itemVariants,
+  backVariants,
+  glowVariants,
+  navGlowVariants,
+  sharedTransition,
+  type MenuItemType,
+} from "@/elements/constants";
+
+interface MenuItemProps {
+  item: MenuItemType;
 }
 
-const menuItems: MenuItem[] = [
-  {
-    icon: <Home className="h-4 w-4 sm:h-5 sm:w-5" />,
-    label: "Home",
-    href: "#",
-    gradient:
-      "radial-gradient(circle, rgba(59,130,246,0.15) 0%, rgba(37,99,235,0.06) 50%, rgba(29,78,216,0) 100%)",
-  },
-  {
-    icon: <Bell className="h-4 w-4 sm:h-5 sm:w-5" />,
-    label: "Notifications",
-    href: "#",
-    gradient:
-      "radial-gradient(circle, rgba(249,115,22,0.15) 0%, rgba(234,88,12,0.06) 50%, rgba(194,65,12,0) 100%)",
-  },
-  {
-    icon: <Settings className="h-4 w-4 sm:h-5 sm:w-5" />,
-    label: "Settings",
-    href: "#",
-    gradient:
-      "radial-gradient(circle, rgba(34,197,94,0.15) 0%, rgba(22,163,74,0.06) 50%, rgba(21,128,61,0) 100%)",
-  },
-  {
-    icon: <User className="h-4 w-4 sm:h-5 sm:w-5" />,
-    label: "Profile",
-    href: "#",
-    gradient:
-      "radial-gradient(circle, rgba(239,68,68,0.15) 0%, rgba(220,38,38,0.06) 50%, rgba(185,28,28,0) 100%)",
-  },
-  {
-    icon: <User className="h-4 w-4 sm:h-5 sm:w-5" />,
-    label: "Resume",
-    href: "#",
-    gradient:
-      "radial-gradient(circle, rgba(239,68,68,0.15) 0%, rgba(220,38,38,0.06) 50%, rgba(185,28,28,0) 100%)",
-  },
-];
-
-const itemVariants = {
-  initial: { rotateX: 0, opacity: 1 },
-  hover: { rotateX: -90, opacity: 0 },
-};
-
-const backVariants = {
-  initial: { rotateX: 90, opacity: 0 },
-  hover: { rotateX: 0, opacity: 1 },
-};
-
-const glowVariants = {
-  initial: { opacity: 0, scale: 0.8 },
-  hover: {
-    opacity: 1,
-    scale: 2,
-    transition: {
-      opacity: { duration: 0.5, ease: [0.4, 0, 0.2, 1] },
-      scale: { duration: 0.5, type: "spring", stiffness: 300, damping: 25 },
-    },
-  },
-};
-
-const navGlowVariants = {
-  initial: { opacity: 0 },
-  hover: {
-    opacity: 1,
-    transition: {
-      duration: 0.5,
-      ease: [0.4, 0, 0.2, 1],
-    },
-  },
-};
-
-const sharedTransition = {
-  type: "spring",
-  stiffness: 100,
-  damping: 20,
-  duration: 0.5,
-  willChange: "transform, opacity",
-};
-
-const MenuItem = React.memo(({ item }: { item: MenuItem }) => {
+const MenuItem = React.memo(({ item }: MenuItemProps) => {
   return (
     <motion.li className="relative flex-shrink-0">
       <motion.div
@@ -126,7 +52,7 @@ const MenuItem = React.memo(({ item }: { item: MenuItem }) => {
             willChange: "transform, opacity",
           }}
         >
-          <span className={`transition-colors duration-300 text-foreground`}>
+          <span className="transition-colors duration-300 text-foreground">
             {item.icon}
           </span>
           <span className="hidden xs:inline lg:inline whitespace-nowrap">
@@ -145,7 +71,7 @@ const MenuItem = React.memo(({ item }: { item: MenuItem }) => {
             willChange: "transform, opacity",
           }}
         >
-          <span className={`transition-colors duration-300 text-foreground`}>
+          <span className="transition-colors duration-300 text-foreground">
             {item.icon}
           </span>
           <span className="hidden xs:inline sm:inline whitespace-nowrap">
@@ -162,10 +88,13 @@ MenuItem.displayName = "MenuItem";
 export function Nav() {
   const { theme } = useTheme();
   const prefersReducedMotion = useReducedMotion();
+  const [lastScrollY, setLastScrollY] = React.useState(0);
+  const [shouldShowNav, setShouldShowNav] = React.useState(true);
+  const navHeight = 70;
 
   const isDarkTheme = theme === "dark";
 
-  const gradientClass = useMemo(() => {
+  const gradientClass = React.useMemo(() => {
     return `absolute -inset-1 sm:-inset-2 bg-gradient-radial from-transparent ${
       isDarkTheme
         ? "via-blue-400/30 via-30% via-purple-400/30 via-60% via-red-400/30 via-90%"
@@ -177,10 +106,37 @@ export function Nav() {
     ? { initial: {}, hover: {} }
     : navGlowVariants;
 
+  React.useEffect(() => {
+    const controlNavbar = () => {
+      if (typeof window !== "undefined") {
+        if (window.scrollY > lastScrollY && window.scrollY > navHeight) {
+          setShouldShowNav(false);
+        } else if (window.scrollY <= lastScrollY || window.scrollY <= 0) {
+          setShouldShowNav(true);
+        }
+
+        setLastScrollY(window.scrollY);
+      }
+    };
+
+    if (typeof window !== "undefined") {
+      window.addEventListener("scroll", controlNavbar);
+
+      return () => {
+        window.removeEventListener("scroll", controlNavbar);
+      };
+    }
+  }, [lastScrollY]);
+
   return (
-    <>
+    <motion.header
+      className="fixed z-50 px-4 py-2"
+      initial={{ y: 0 }}
+      animate={{ y: shouldShowNav ? 0 : -navHeight - 20 }}
+      transition={{ duration: 0.3, ease: "easeInOut" }}
+    >
       <motion.nav
-        className="p-1 sm:p-2 rounded-xl sm:rounded-2xl bg-gradient-to-b from-background/80 to-background/40 backdrop-blur-lg border border-border/40 shadow-lg relative overflow-hidden max-w-full"
+        className="p-1 sm:p-2 rounded-xl sm:rounded-2xl bg-gradient-to-b from-background/80 to-background/40 backdrop-blur-lg border-2 !border-gray-500 shadow-lg relative overflow-hidden max-w-full mx-auto bg-background/90"
         initial="initial"
         whileHover="hover"
         style={{ willChange: "transform, opacity" }}
@@ -205,7 +161,7 @@ export function Nav() {
                 objectFit: "contain",
               }}
             />
-            <span className="text-xl p-1 ">
+            <span className="text-xl p-1">
               Miguel<span style={{ color: "hsl(var(--logo))" }}>Karma</span>
             </span>
             <div className="h-8 w-px bg-border lg:ml-2 hidden lg:block" />
@@ -219,13 +175,13 @@ export function Nav() {
             <ThemeToggle />
           </ul>
 
-          {/* Mobile menu  */}
+          {/* Mobile menu */}
           <div className="flex ml-2 items-center lg:hidden">
             <ThemeToggle />
             <MobileMenu menuItems={menuItems} />
           </div>
         </div>
       </motion.nav>
-    </>
+    </motion.header>
   );
 }

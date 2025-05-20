@@ -7,7 +7,7 @@ export function NavLayout() {
     <>
       <ThemeProvider attribute="class" defaultTheme="dark" disableSystemTheme>
         <div>
-          <div className="container mx-auto pt-4 sm:pt-6 px-2 sm:px-4 relative">
+          <div className="container mx-auto pt-4 sm:pt-6 px-2 sm:px-4 relative ">
             <div className="flex justify-center">
               <Nav />
             </div>
