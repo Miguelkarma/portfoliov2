@@ -275,3 +275,20 @@ export const certifications = [
     },
   },
 ];
+
+export const contactInfo = {
+  badge: {
+    text: "Explore My Portfolio",
+    link: "#",
+    cta: "Explore",
+  },
+  title: "Get In Touch",
+  description:
+    "Feel free to reach out if you have any questions or would like to discuss potential collaborations.",
+  email: "santos.p.miguel46@gmail.com",
+  ctaButton: {
+    text: "Send Email",
+    link: "https://mail.google.com/mail/?view=cm&fs=1&to=santos.p.miguel46@gmail.com",
+    icon: "Mail", // This corresponds to the Lucide React icon
+  },
+};
