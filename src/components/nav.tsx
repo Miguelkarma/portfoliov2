@@ -32,6 +32,9 @@ const MenuItem = React.memo(({ item }: MenuItemProps) => {
     const targetElement = document.getElementById(targetId);
 
     if (targetElement) {
+      // Force show nav when clicking menu items
+      document.dispatchEvent(new CustomEvent("forceShowNav"));
+
       targetElement.scrollIntoView({
         behavior: "smooth",
         block: "start",
@@ -111,6 +114,8 @@ export function Nav() {
   const prefersReducedMotion = useReducedMotion();
   const [lastScrollY, setLastScrollY] = React.useState(0);
   const [shouldShowNav, setShouldShowNav] = React.useState(true);
+  const [isScrolling, setIsScrolling] = React.useState(false);
+  const scrollTimeoutRef = React.useRef<NodeJS.Timeout | null>(null);
   const navHeight = 20;
   const scrollThreshold = 10;
 
@@ -129,16 +134,50 @@ export function Nav() {
     : navGlowVariants;
 
   React.useEffect(() => {
+    // Handle force show nav event (triggered from menu item clicks)
+    const handleForceShowNav = () => {
+      setShouldShowNav(true);
+
+      // Set a flag to ignore scroll events briefly while smooth scrolling happens
+      setIsScrolling(true);
+
+      // Clear any existing timeout
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
+      }
+
+      // Re-enable scroll detection after smooth scroll animation likely finished
+      scrollTimeoutRef.current = setTimeout(() => {
+        setIsScrolling(false);
+        // Update last scroll position to current position
+        setLastScrollY(window.scrollY);
+      }, 1000); // Adjust time based on your smooth scroll duration
+    };
+
+    document.addEventListener("forceShowNav", handleForceShowNav);
+
+    return () => {
+      document.removeEventListener("forceShowNav", handleForceShowNav);
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
+      }
+    };
+  }, []);
+
+  React.useEffect(() => {
     const controlNavbar = () => {
-      if (typeof window !== "undefined") {
+      if (typeof window !== "undefined" && !isScrolling) {
         const currentScrollY = window.scrollY;
         const scrollDifference = Math.abs(currentScrollY - lastScrollY);
 
         if (scrollDifference > scrollThreshold) {
-          if (currentScrollY > lastScrollY && currentScrollY > navHeight) {
-            setShouldShowNav(false);
-          } else if (currentScrollY < lastScrollY || currentScrollY <= 0) {
+          // Show nav when scrolling up or at the top
+          if (currentScrollY < lastScrollY || currentScrollY <= 0) {
             setShouldShowNav(true);
+          }
+          // Hide nav when scrolling down past the threshold
+          else if (currentScrollY > lastScrollY && currentScrollY > navHeight) {
+            setShouldShowNav(false);
           }
 
           setLastScrollY(currentScrollY);
@@ -153,7 +192,7 @@ export function Nav() {
         window.removeEventListener("scroll", controlNavbar);
       };
     }
-  }, [lastScrollY, navHeight, scrollThreshold]);
+  }, [lastScrollY, navHeight, scrollThreshold, isScrolling]);
 
   return (
     <motion.header

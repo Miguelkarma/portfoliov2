@@ -8,8 +8,24 @@ import {
   containerVariants,
   badgeVariants,
 } from "@/animation/motion-variant";
+import { useEffect } from "react";
+
+declare global {
+  interface Window {
+    HSStaticMethods?: {
+      autoInit?: () => void;
+    };
+  }
+}
 
 export default function Certifications() {
+  //fix for preline js conflicting with framer
+  useEffect(() => {
+    if (window.HSStaticMethods && window.HSStaticMethods.autoInit) {
+      window.HSStaticMethods.autoInit();
+    }
+  }, [certifications]);
+
   return (
     <motion.div
       initial="start"
@@ -46,12 +62,11 @@ export default function Certifications() {
               key={cert.id}
               variants={badgeVariants}
               custom={index}
-              className="hs-accordion bg-card-foreground border !border-gray-500 hs-accordion-active:bg-gray-100 rounded-xl p-6 mb-4"
+              className="hs-accordion bg-card-foreground border !border-gray-500 rounded-xl p-6 mb-4"
               id={`hs-certification-${cert.id}`}
             >
               <button
                 className="hs-accordion-toggle group pb-3 inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-start text-muted rounded-lg transition hover:text-gray-500 focus:outline-hidden focus:text-muted"
-                aria-expanded={cert.id === 1 ? "true" : "false"}
                 aria-controls={`hs-certification-collapse-${cert.id}`}
               >
                 <motion.div
@@ -99,7 +114,7 @@ export default function Certifications() {
               <div
                 id={`hs-certification-collapse-${cert.id}`}
                 className={`hs-accordion-content ${
-                  cert.id === 1 ? "" : "hidden"
+                  cert.id === 1 ? "open" : "hidden"
                 } w-full overflow-hidden transition-[height] duration-300`}
                 role="region"
                 aria-labelledby={`hs-certification-${cert.id}`}

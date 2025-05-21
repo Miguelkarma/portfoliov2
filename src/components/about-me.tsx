@@ -74,8 +74,12 @@ export default function AboutMe() {
               {/* Tabs Section for Skills and Education */}
               <Tabs defaultValue="skills" className="w-full">
                 <TabsList className="grid w-full max-w-md grid-cols-2 gap-2">
-                  <TabsTrigger value="skills">Skills</TabsTrigger>
-                  <TabsTrigger value="education">Education</TabsTrigger>
+                  <TabsTrigger value="skills" className=" cursor-pointer">
+                    Skills
+                  </TabsTrigger>
+                  <TabsTrigger value="education" className=" cursor-pointer">
+                    Education
+                  </TabsTrigger>
                 </TabsList>
 
                 {/* Skills Tab Content */}
