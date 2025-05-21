@@ -1,23 +1,25 @@
 import { Home, User, Info, Briefcase, FolderGit, Mail } from "lucide-react";
 
-export type ProjectType = {
-  title: string;
-  description: string;
-  image: string;
-  tags: string[];
-  github: string;
-  live: string;
-  overlayTitle: string;
-  overlayDescription: string;
-};
-
 import cert1 from "@/assets/certs/cert1.jpg";
 import cert2 from "@/assets/certs/cert2.jpg";
 import cert3 from "@/assets/certs/cert3.jpg";
 import cert4 from "@/assets/certs/cert4.jpg";
 import udemy from "@/assets/udemy-logo.jpg";
 
-export const projects: ProjectType[] = [
+export type ProjectCardProps = {
+  title?: string;
+  description?: string;
+  buttonText?: string;
+  buttonLink?: string;
+  image?: string;
+  tags?: string[];
+  github?: string;
+  live?: string;
+  overlayTitle?: string;
+  overlayDescription?: string;
+};
+
+export const projects = [
   {
     title: "Flux",
     description:
@@ -49,13 +51,16 @@ export const projects: ProjectType[] = [
     tags: [
       "Javascript",
       "PHP",
+      "Bootstrap",
       "HTML",
       "CSS",
       "mySQL",
       "Git",
       "Calendar.js",
       "Xampp",
+      "Styled Components",
       "REST API",
+      "",
     ],
     github: "https://github.com/Miguelkarma/VetCare",
     live: "http://vet-care.miguelkarma.rf.gd/?i=1",
@@ -99,6 +104,7 @@ export const projects: ProjectType[] = [
       "Git",
       "Graph.js",
       "Laragon",
+      "",
     ],
     github: "https://github.com/Miguelkarma/calorieCalc",
     live: "http://caloriecalc.miguelkarma.rf.gd/?i=1",
@@ -208,42 +214,42 @@ export const menuItems: MenuItemType[] = [
     label: "Home",
     href: "#home",
     gradient:
-      "radial-gradient(circle, rgba(59,130,246,0.15) 0%, rgba(37,99,235,0.06) 50%, rgba(29,78,216,0) 100%)",
+      "radial-gradient(circle, rgba(95, 153, 245, 0.42) 0%, rgba(37,99,235,0.06) 50%, rgba(29,78,216,0) 100%)",
   },
   {
     icon: <Info className="h-4 w-4 sm:h-5 sm:w-5" />,
     label: "About Me",
     href: "#about-me",
     gradient:
-      "radial-gradient(circle, rgba(249,115,22,0.15) 0%, rgba(234,88,12,0.06) 50%, rgba(194,65,12,0) 100%)",
+      "radial-gradient(circle, rgba(199, 124, 214, 0.42) 0%, rgba(234,88,12,0.06) 50%, rgba(194,65,12,0) 100%)",
   },
   {
     icon: <Briefcase className="h-4 w-4 sm:h-5 sm:w-5" />,
     label: "Experience",
     href: "#experience",
     gradient:
-      "radial-gradient(circle, rgba(34,197,94,0.15) 0%, rgba(22,163,74,0.06) 50%, rgba(21,128,61,0) 100%)",
+      "radial-gradient(circle, rgba(162, 241, 191, 0.42) 0%, rgba(22,163,74,0.06) 50%, rgba(21,128,61,0) 100%)",
   },
   {
     icon: <FolderGit className="h-4 w-4 sm:h-5 sm:w-5" />,
     label: "Projects",
     href: "#projects",
     gradient:
-      "radial-gradient(circle, rgba(239,68,68,0.15) 0%, rgba(220,38,38,0.06) 50%, rgba(185,28,28,0) 100%)",
+      "radial-gradient(circle, rgba(163, 29, 216, 0.42) 0%, rgba(220,38,38,0.06) 50%, rgba(185,28,28,0) 100%)",
   },
   {
     icon: <User className="h-4 w-4 sm:h-5 sm:w-5" />,
     label: "Certifications",
     href: "#certs",
     gradient:
-      "radial-gradient(circle, rgba(239,68,68,0.15) 0%, rgba(220,38,38,0.06) 50%, rgba(185,28,28,0) 100%)",
+      "radial-gradient(circle, rgba(46, 106, 175, 0.42) 0%, rgba(220,38,38,0.06) 50%, rgba(185,28,28,0) 100%)",
   },
   {
     icon: <Mail className="h-4 w-4 sm:h-5 sm:w-5" />,
     label: "Contact Me",
     href: "#contact",
     gradient:
-      "radial-gradient(circle, rgba(239,68,68,0.15) 0%, rgba(220,38,38,0.06) 50%, rgba(185,28,28,0) 100%)",
+      "radial-gradient(circle, rgba(241, 170, 78, 0.42) 0%, rgba(220,38,38,0.06) 50%, rgba(185,28,28,0) 100%)",
   },
 ];
 

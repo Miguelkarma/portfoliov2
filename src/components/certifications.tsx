@@ -32,7 +32,7 @@ export default function Certifications() {
       whileInView="end"
       viewport={{ once: true, amount: 0.2 }}
       variants={fadeIn}
-      className="max-w-4xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto bg-card rounded-xl border mt-12"
+      className="max-w-4xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto bg-card rounded-xl border mt-95"
     >
       {/* Title */}
       <motion.div

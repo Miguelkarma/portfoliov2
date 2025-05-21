@@ -11,7 +11,7 @@ export default function Experience() {
       <div className="mx-auto lg:max-w-7xl w-full px-5 sm:px-10 md:px-12 lg:px-5 relative">
         <div className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 lg:translate-x-100 lg:-translate-y-70 lg:right-100 lg:top-0 w-96 h-96 skew-x-6 opacity-40 rounded-full bg-gradient-to-bl from-glow2 to-glow1 blur-3xl flex animate-pulse" />
       </div>
-      <section id="experience" className="mt-70 relative overflow-hidden">
+      <section id="experience" className="mt-60 relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900/10 via-slate-900 to-slate-950 z-0"></div>
         <div className="container mx-auto px-6 relative z-10">
           <SectionHeading title="Experience" />

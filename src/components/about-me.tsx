@@ -36,7 +36,11 @@ export default function AboutMe() {
           className="flex flex-col lg:flex-row gap-12 items-start md:items-center sm:items-center"
         >
           {/* Content Section */}
-          <motion.div variants={fadeInRight} className="flex-1 space-y-6">
+
+          <motion.div
+            variants={fadeInRight}
+            className="w-full lg:w-1/2 space-y-6"
+          >
             <motion.h1 variants={fadeInUp} className="text-4xl font-bold mb-8">
               <span className="text-transparent bg-clip-text bg-gradient-to-br from-dev to-dev2">
                 {aboutMeInfo.title}
@@ -166,20 +170,25 @@ export default function AboutMe() {
             </motion.div>
           </motion.div>
 
-          <motion.div variants={fadeInLeft} className="flex-shrink-0">
+          <motion.div
+            variants={fadeInLeft}
+            className="w-full lg:w-1/2 flex justify-center items-center"
+          >
             <div className="relative">
-              <motion.div variants={fadeInScale} className="w-72 h-96 relative">
+              <motion.div
+                variants={fadeInScale}
+                className="w-xl max-sm:w-md max-sm:h-100 md:h-130  lg:h-150 relative"
+              >
                 <motion.div
                   initial={{ opacity: 0, x: 0, y: 10 }}
                   animate={{ opacity: 0.8, x: 14, y: 20 }}
                   transition={{ delay: 0.4, duration: 0.6 }}
-                  className="absolute inset-0 border-2 !border-gray-800 rounded-lg opacity-80 transform translate-x-14 translate-y-20 shadow-md dark:shadow-primary"
                 />
-                <div className="relative flex items-center bg-gray-800 border-b !border-gray-800 rounded-t-xl py-2 px-4">
-                  <div className="flex gap-x-1 absolute top-1/2 left-4 -translate-y-1/2">
+                <div className="relative flex items-center bg-gray-800 border-b !border-gray-800 rounded-t-xl py-2 px-4  ">
+                  <div className="flex gap-x-1 absolute top-1/2 left-4 -translate-y-1/2 ">
                     <motion.span
                       whileHover={{ scale: 1.2 }}
-                      className="w-3 h-3 bg-red-500 rounded-full"
+                      className="w-3 h-3 bg-red-500 rounded-full "
                     />
                     <motion.span
                       whileHover={{ scale: 1.2 }}
@@ -194,7 +203,7 @@ export default function AboutMe() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.8 }}
-                    className="mx-auto text-sm text-gray-300"
+                    className="mx-auto text-sm text-gray-300 "
                   >
                     {aboutMeInfo.profileImage.browser.url}
                   </motion.div>
@@ -203,7 +212,7 @@ export default function AboutMe() {
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.3, duration: 0.7 }}
-                  className="relative w-full h-full bg-gray-700 rounded-b-lg overflow-hidden border !border-gray-800 md:flex md:justify-center"
+                  className="relative w-full h-full bg-transparent rounded-b-lg overflow-hidden border !border-gray-800 md:flex md:justify-center  "
                 >
                   <motion.img
                     initial={{ opacity: 0 }}
@@ -211,7 +220,7 @@ export default function AboutMe() {
                     transition={{ delay: 0.5, duration: 0.8 }}
                     src={profile}
                     alt={aboutMeInfo.profileImage.alt}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover "
                   />
                 </motion.div>
               </motion.div>
