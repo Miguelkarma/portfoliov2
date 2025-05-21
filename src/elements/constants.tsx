@@ -211,14 +211,14 @@ export const menuItems: MenuItemType[] = [
   {
     icon: <User className="h-4 w-4 sm:h-5 sm:w-5" />,
     label: "Certifications",
-    href: "certs",
+    href: "#certs",
     gradient:
       "radial-gradient(circle, rgba(239,68,68,0.15) 0%, rgba(220,38,38,0.06) 50%, rgba(185,28,28,0) 100%)",
   },
   {
     icon: <Mail className="h-4 w-4 sm:h-5 sm:w-5" />,
     label: "Contact Me",
-    href: "contact",
+    href: "#contact",
     gradient:
       "radial-gradient(circle, rgba(239,68,68,0.15) 0%, rgba(220,38,38,0.06) 50%, rgba(185,28,28,0) 100%)",
   },

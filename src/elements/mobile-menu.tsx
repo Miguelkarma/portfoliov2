@@ -17,28 +17,6 @@ interface MenuItem {
   gradient: string;
 }
 
-const itemVariants = {
-  initial: { rotateX: 0, opacity: 1 },
-  hover: { rotateX: -90, opacity: 0 },
-};
-
-const backVariants = {
-  initial: { rotateX: 90, opacity: 0 },
-  hover: { rotateX: 0, opacity: 1 },
-};
-
-const glowVariants = {
-  initial: { opacity: 0, scale: 0.8 },
-  hover: {
-    opacity: 1,
-    scale: 2,
-    transition: {
-      opacity: { duration: 0.5, ease: [0.4, 0, 0.2, 1] },
-      scale: { duration: 0.5, type: "spring", stiffness: 300, damping: 25 },
-    },
-  },
-};
-
 const sharedTransition = {
   type: "spring",
   stiffness: 100,
@@ -59,7 +37,6 @@ const MobileMenuItem = React.memo(
         >
           <motion.div
             className="absolute inset-0 z-0 pointer-events-none"
-            variants={glowVariants}
             style={{
               background: item.gradient,
               opacity: 0,
@@ -72,7 +49,6 @@ const MobileMenuItem = React.memo(
             href={item.href}
             onClick={onItemClick}
             className="flex items-center gap-3 px-3 py-2.5 relative z-10 bg-transparent text-muted-foreground group-hover:text-foreground transition-colors rounded-lg text-sm w-full"
-            variants={itemVariants}
             transition={sharedTransition}
             style={{
               transformStyle: "preserve-3d",
@@ -89,7 +65,6 @@ const MobileMenuItem = React.memo(
             href={item.href}
             onClick={onItemClick}
             className="flex items-center gap-3 px-3 py-2.5 absolute inset-0 z-10 bg-transparent text-muted-foreground group-hover:text-foreground transition-colors rounded-lg text-sm w-full"
-            variants={backVariants}
             transition={sharedTransition}
             style={{
               transformStyle: "preserve-3d",
@@ -97,12 +72,7 @@ const MobileMenuItem = React.memo(
               rotateX: 90,
               willChange: "transform, opacity",
             }}
-          >
-            <span className="transition-colors duration-300 text-foreground">
-              {item.icon}
-            </span>
-            <span className="whitespace-nowrap">{item.label}</span>
-          </motion.a>
+          ></motion.a>
         </motion.div>
       </motion.li>
     );
@@ -126,7 +96,7 @@ export function MobileMenu({ menuItems }: MobileMenuProps) {
     <Popover open={isPopoverOpen} onOpenChange={setIsPopoverOpen}>
       <PopoverTrigger asChild>
         <motion.button
-          className="p-2 rounded-lg hover:bg-accent transition-colors text-foreground"
+          className="p-2 rounded-lg hover:bg-accent transition-colors text-foreground ml-2"
           whileTap={{ scale: 0.95 }}
           transition={{ type: "spring", stiffness: 400, damping: 25 }}
         >
