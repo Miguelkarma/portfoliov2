@@ -32,7 +32,6 @@ const MenuItem = React.memo(({ item }: MenuItemProps) => {
     const targetElement = document.getElementById(targetId);
 
     if (targetElement) {
-      // Force show nav when clicking menu items
       document.dispatchEvent(new CustomEvent("forceShowNav"));
 
       targetElement.scrollIntoView({
@@ -134,24 +133,20 @@ export function Nav() {
     : navGlowVariants;
 
   React.useEffect(() => {
-    // Handle force show nav event (triggered from menu item clicks)
     const handleForceShowNav = () => {
       setShouldShowNav(true);
 
-      // Set a flag to ignore scroll events briefly while smooth scrolling happens
       setIsScrolling(true);
 
-      // Clear any existing timeout
       if (scrollTimeoutRef.current) {
         clearTimeout(scrollTimeoutRef.current);
       }
 
-      // Re-enable scroll detection after smooth scroll animation likely finished
       scrollTimeoutRef.current = setTimeout(() => {
         setIsScrolling(false);
-        // Update last scroll position to current position
+
         setLastScrollY(window.scrollY);
-      }, 1000); // Adjust time based on your smooth scroll duration
+      }, 1000);
     };
 
     document.addEventListener("forceShowNav", handleForceShowNav);
@@ -171,12 +166,12 @@ export function Nav() {
         const scrollDifference = Math.abs(currentScrollY - lastScrollY);
 
         if (scrollDifference > scrollThreshold) {
-          // Show nav when scrolling up or at the top
           if (currentScrollY < lastScrollY || currentScrollY <= 0) {
             setShouldShowNav(true);
-          }
-          // Hide nav when scrolling down past the threshold
-          else if (currentScrollY > lastScrollY && currentScrollY > navHeight) {
+          } else if (
+            currentScrollY > lastScrollY &&
+            currentScrollY > navHeight
+          ) {
             setShouldShowNav(false);
           }
 

@@ -47,7 +47,7 @@ export default function Contact() {
             <motion.a
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="inline-flex justify-center items-center gap-x-3 text-center bg-gradient-to-tl from-dev to-dev2 hover:from-violet-600 hover:to-blue-600 focus:outline-hidden focus:from-violet-600 focus:to-blue-600 border border-transparent text-white text-sm font-medium rounded-full py-3 px-4"
+              className="inline-flex justify-center items-center gap-x-3 text-center bg-gradient-to-tl from-glow1 to-dev2 hover:from-glow1 hover:to-dev focus:outline-hidden focus:from-violet-600 focus:to-blue-600 border border-transparent text-white text-sm font-medium rounded-full py-3 px-4"
               href="https://mail.google.com/mail/?view=cm&fs=1&to=santos.p.miguel46@gmail.com"
               target="_blank"
               transition={{ type: "spring", stiffness: 400, damping: 15 }}

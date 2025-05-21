@@ -27,6 +27,28 @@ const sharedTransition = {
 
 const MobileMenuItem = React.memo(
   ({ item, onItemClick }: { item: MenuItem; onItemClick?: () => void }) => {
+    const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+      e.preventDefault();
+
+      const targetId = item.href.replace("#", "");
+      const targetElement = document.getElementById(targetId);
+
+      if (targetElement) {
+        document.dispatchEvent(new CustomEvent("forceShowNav"));
+
+        targetElement.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+
+        window.history.pushState(null, "", item.href);
+      }
+
+      if (onItemClick) {
+        onItemClick();
+      }
+    };
+
     return (
       <motion.li className="relative">
         <motion.div
@@ -47,7 +69,7 @@ const MobileMenuItem = React.memo(
           />
           <motion.a
             href={item.href}
-            onClick={onItemClick}
+            onClick={handleClick}
             className="flex items-center gap-3 px-3 py-2.5 relative z-10 bg-transparent text-muted-foreground group-hover:text-foreground transition-colors rounded-lg text-sm w-full"
             transition={sharedTransition}
             style={{
@@ -63,7 +85,7 @@ const MobileMenuItem = React.memo(
           </motion.a>
           <motion.a
             href={item.href}
-            onClick={onItemClick}
+            onClick={handleClick}
             className="flex items-center gap-3 px-3 py-2.5 absolute inset-0 z-10 bg-transparent text-muted-foreground group-hover:text-foreground transition-colors rounded-lg text-sm w-full"
             transition={sharedTransition}
             style={{
