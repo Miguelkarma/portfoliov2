@@ -16,6 +16,7 @@ import {
 } from "@/animation/motion-variant";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
+import { Building, Settings } from "lucide-react";
 
 export default function AboutMe() {
   const sectionRef = useRef(null);
@@ -75,9 +76,11 @@ export default function AboutMe() {
               <Tabs defaultValue="skills" className="w-full">
                 <TabsList className="grid w-full max-w-md grid-cols-2 gap-2">
                   <TabsTrigger value="skills" className=" cursor-pointer">
+                    <Settings className="inline-block " />
                     Skills
                   </TabsTrigger>
                   <TabsTrigger value="education" className=" cursor-pointer">
+                    <Building className="inline-block " />
                     Education
                   </TabsTrigger>
                 </TabsList>
@@ -112,7 +115,7 @@ export default function AboutMe() {
                                 }}
                               >
                                 <Badge
-                                  className={`${skill.color} hover:${skill.color} text-white`}
+                                  className={`${skill.color} hover:${skill.color} text-white text-sm`}
                                 >
                                   {skill.name}
                                 </Badge>
@@ -144,7 +147,12 @@ export default function AboutMe() {
                         }}
                         className="border !border-gray-500 rounded-lg p-4"
                       >
-                        <h3 className="font-semibold text-lg">{edu.degree}</h3>
+                        <div className="flex items-center gap-2 mb-1">
+                          <Building className="w-5 h-5 text-primary" />
+                          <h3 className="font-semibold text-lg">
+                            {edu.degree}
+                          </h3>
+                        </div>
                         <p className="text-gray-500">{edu.institution}</p>
                         <p className="text-sm text-gray-500">{edu.period}</p>
                         {edu.description && (

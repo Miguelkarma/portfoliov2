@@ -24,7 +24,7 @@ function TabsList({
     <TabsPrimitive.List
       data-slot="tabs-list"
       className={cn(
-        " inline-flex h-9 w-fit items-center justify-center rounded-lg p-[3px]",
+        "inline-flex h-9 w-fit items-center justify-center rounded-lg p-[3px]",
         className
       )}
       {...props}
@@ -32,10 +32,18 @@ function TabsList({
   );
 }
 
+// Extended interface for TabsTrigger to accept an icon prop
+interface TabsTriggerProps
+  extends React.ComponentProps<typeof TabsPrimitive.Trigger> {
+  icon?: React.ReactNode;
+}
+
 function TabsTrigger({
   className,
+  icon,
+  children,
   ...props
-}: React.ComponentProps<typeof TabsPrimitive.Trigger>) {
+}: TabsTriggerProps) {
   return (
     <TabsPrimitive.Trigger
       data-slot="tabs-trigger"
@@ -44,7 +52,10 @@ function TabsTrigger({
         className
       )}
       {...props}
-    />
+    >
+      {icon && <span className="mr-1">{icon}</span>}
+      {children}
+    </TabsPrimitive.Trigger>
   );
 }
 

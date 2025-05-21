@@ -154,11 +154,11 @@ export const skills: SkillsType = {
   ],
   backend: [
     { name: "Firebase", color: "bg-amber-600" },
-    { name: "Node.js", color: "bg-green-600" },
-    { name: "Express", color: "bg-gray-600" },
+    { name: "Node.js", color: "bg-green-800" },
+    { name: "Express", color: "bg-emerald-800" },
   ],
   tools: [
-    { name: "Git", color: "bg-red-500" },
+    { name: "Git", color: "bg-gray-900" },
     { name: "GitHub", color: "bg-black" },
     { name: "BitBucket", color: "bg-sky-700" },
     { name: "Figma", color: "bg-purple-500" },
