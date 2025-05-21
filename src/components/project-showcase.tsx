@@ -14,11 +14,13 @@ import {
 import flux from "@/assets/Flux.png";
 import CalorieCalc from "@/assets/CalorieCalc.png";
 import VetCare from "@/assets/VetCare.png";
+import portfolio from "@/assets/portfolio.png";
 
 const imageMap = {
   flux: flux,
   VetCare: VetCare,
   CalorieCalc: CalorieCalc,
+  portfolio: portfolio,
 };
 
 export default function ProjectShowcase() {
