@@ -12,6 +12,11 @@ import {
   glowVariants,
   navGlowVariants,
   sharedTransition,
+  fadeInScale,
+  navScrollVariants,
+  logoVariants,
+  menuContainerVariants,
+  menuItemEntryVariants,
 } from "@/animation/motion-variant";
 import { menuItems, type MenuItemType } from "@/elements/constants";
 
@@ -39,7 +44,7 @@ const MenuItem = React.memo(({ item }: MenuItemProps) => {
   return (
     <motion.li className="relative flex-shrink-0 ">
       <motion.div
-        className="block rounded-lg sm:rounded-xl group relative w-full"
+        className="block rounded-lg sm:rounded-xl group relative "
         style={{ perspective: "600px" }}
         whileHover="hover"
         initial="initial"
@@ -106,7 +111,8 @@ export function Nav() {
   const prefersReducedMotion = useReducedMotion();
   const [lastScrollY, setLastScrollY] = React.useState(0);
   const [shouldShowNav, setShouldShowNav] = React.useState(true);
-  const navHeight = 70;
+  const navHeight = 20;
+  const scrollThreshold = 10;
 
   const isDarkTheme = theme === "dark";
 
@@ -125,34 +131,39 @@ export function Nav() {
   React.useEffect(() => {
     const controlNavbar = () => {
       if (typeof window !== "undefined") {
-        if (window.scrollY > lastScrollY && window.scrollY > navHeight) {
-          setShouldShowNav(false);
-        } else if (window.scrollY <= lastScrollY || window.scrollY <= 0) {
-          setShouldShowNav(true);
-        }
+        const currentScrollY = window.scrollY;
+        const scrollDifference = Math.abs(currentScrollY - lastScrollY);
 
-        setLastScrollY(window.scrollY);
+        if (scrollDifference > scrollThreshold) {
+          if (currentScrollY > lastScrollY && currentScrollY > navHeight) {
+            setShouldShowNav(false);
+          } else if (currentScrollY < lastScrollY || currentScrollY <= 0) {
+            setShouldShowNav(true);
+          }
+
+          setLastScrollY(currentScrollY);
+        }
       }
     };
 
     if (typeof window !== "undefined") {
-      window.addEventListener("scroll", controlNavbar);
+      window.addEventListener("scroll", controlNavbar, { passive: true });
 
       return () => {
         window.removeEventListener("scroll", controlNavbar);
       };
     }
-  }, [lastScrollY]);
+  }, [lastScrollY, navHeight, scrollThreshold]);
 
   return (
     <motion.header
-      className="fixed z-50 px-4 py-2"
-      initial={{ y: 0 }}
-      animate={{ y: shouldShowNav ? 0 : -navHeight - 20 }}
-      transition={{ duration: 0.3, ease: "easeInOut" }}
+      className="fixed z-50 px-4 py-2 "
+      initial="hidden"
+      animate={shouldShowNav ? "visible" : "hidden"}
+      variants={navScrollVariants}
     >
       <motion.nav
-        className="p-1 sm:p-2 rounded-xl sm:rounded-2xl bg-gradient-to-b from-background/80 to-background/40 backdrop-blur-lg border-2 !border-gray-500 shadow-lg relative overflow-hidden max-w-full mx-auto bg-background/90"
+        className="p-1 sm:p-2 rounded-xl sm:rounded-2xl bg-gradient-to-b from-background/80 to-background/40 backdrop-blur-lg border-2 !border-gray-500 shadow-lg relative overflow-hidden w-full mx-auto bg-background/90"
         initial="initial"
         whileHover="hover"
         style={{ willChange: "transform, opacity" }}
@@ -165,8 +176,11 @@ export function Nav() {
         />
 
         <div className="flex items-center justify-between relative z-10">
-          {/* Logo section */}
-          <div className="flex items-center gap-1 sm:gap-2">
+          {/* Logo section*/}
+          <motion.div
+            className="flex items-center gap-1 sm:gap-2"
+            variants={logoVariants}
+          >
             <img
               src={logo}
               alt="Logo"
@@ -181,21 +195,32 @@ export function Nav() {
               Miguel<span style={{ color: "hsl(var(--logo))" }}>Karma</span>
             </span>
             <div className="h-8 w-px bg-border lg:ml-2 hidden lg:block" />
-          </div>
+          </motion.div>
 
           {/* Desktop menu */}
-          <ul className="hidden lg:flex items-center gap-1 sm:gap-2">
+          <motion.ul
+            className="hidden lg:flex items-center gap-1 sm:gap-2"
+            variants={menuContainerVariants}
+          >
             {menuItems.map((item) => (
               <MenuItem key={item.label} item={item} />
             ))}
-            <ThemeToggle />
-          </ul>
+            <motion.div variants={menuItemEntryVariants}>
+              <ThemeToggle />
+            </motion.div>
+          </motion.ul>
 
           {/* Mobile menu */}
-          <div className="flex ml-2 items-center lg:hidden">
+          <motion.div
+            className="flex ml-2 items-center lg:hidden"
+            variants={fadeInScale}
+            initial="start"
+            animate="end"
+            transition={{ delay: 0.7 }}
+          >
             <ThemeToggle />
             <MobileMenu menuItems={menuItems} />
-          </div>
+          </motion.div>
         </div>
       </motion.nav>
     </motion.header>
