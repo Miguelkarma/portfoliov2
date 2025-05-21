@@ -39,30 +39,27 @@ export default function ProjectShowcase() {
 
 function Project({ project }: { project: ProjectType & { image: string } }) {
   return (
-    <div className="mt-12 flex flex-col lg:flex-row gap-6 sm:bg-card md:bg-card lg:bg-gradient-to-l from-cyan-900 via-card to-card rounded-lg  shadow-md shadow-logo">
+    <div className="mt-12 flex flex-col lg:flex-row gap-6 rounded-lg  ">
       {/* Project Image Section */}
       <div className="lg:w-1/2 relative overflow-hidden rounded-l-md">
-        <div className="overflow-hidden">
-          <div className="absolute inset-0 sm:bg-card sm:rounded-md md:bg-card lg:bg-gradient-to-l from-card via-card to-card pointer-events-none"></div>
-          <div className="relative transition-opacity duration-300">
-            <div className="bg-transparent p-6 font-mono text-center">
-              <h3 className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-logo to-dev2 mb-2">
+        <div className="overflow-hidden ">
+          <div className="relative transition-opacity duration-300 ">
+            <div className="bg-card p-6 font-mono text-center rounded-t-lg ">
+              <h3 className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-dev to-dev2 mb-2">
                 {project.overlayTitle}
               </h3>
-              <p className="text-sm text-gray-300">
-                {project.overlayDescription}
-              </p>
+              <p className="text-sm text-muted">{project.overlayDescription}</p>
             </div>
 
             <div>
               <div
-                className="p-4 text-emerald-300 text-xs font-mono overflow-hidden"
+                className=" text-emerald-300 text-xs font-mono overflow-hidden"
                 style={{ height: "280px" }}
               >
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="rounded-lg"
+                  className="rounded-b-lg "
                 />
               </div>
             </div>
@@ -71,15 +68,15 @@ function Project({ project }: { project: ProjectType & { image: string } }) {
       </div>
 
       <div className="lg:w-1/2 flex flex-col items-end justify-center text-end p-6">
-        <h3 className="text-3xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-br from-logo to-dev2">
+        <h3 className="text-3xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-br from-dev to-dev2">
           {project.title}
         </h3>
 
-        <div className="mb-6 w-full">
-          <p className="text-gray-300">{project.description}</p>
+        <div className="mb-6 w-full bg-card p-2 rounded-lg ">
+          <p className="text-primary">{project.description}</p>
         </div>
 
-        <div className="flex flex-wrap justify-end gap-4 mb-4 font-mono text-sm text-gray-400">
+        <div className="flex flex-wrap justify-end gap-4 mb-4 font-mono text-sm text-gray-500">
           {project.tags.map((tag, i) => (
             <span key={i}>{tag}</span>
           ))}
@@ -90,7 +87,7 @@ function Project({ project }: { project: ProjectType & { image: string } }) {
             href={project.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-300 hover:text-emerald-400 transition-colors"
+            className="text-gray-500 hover:text-indigo-500 transition-colors"
           >
             <Github size={22} />
           </a>
@@ -98,7 +95,7 @@ function Project({ project }: { project: ProjectType & { image: string } }) {
             href={project.live}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-300 hover:text-emerald-400 transition-colors"
+            className="text-gray-500 hover:text-teal-500 transition-colors"
           >
             <ExternalLink size={22} />
           </a>

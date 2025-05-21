@@ -23,11 +23,11 @@ export default function Certifications() {
             {certifications.map((cert) => (
               <div
                 key={cert.id}
-                className="hs-accordion bg-card-foreground border hs-accordion-active:bg-gray-100 rounded-xl p-6 dark:hs-accordion-active:bg-white/10 mb-4"
+                className="hs-accordion bg-card-foreground border !border-gray-500 hs-accordion-active:bg-gray-100 rounded-xl p-6  mb-4"
                 id={`hs-certification-${cert.id}`}
               >
                 <button
-                  className="hs-accordion-toggle group pb-3 inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-start text-gray-800 rounded-lg transition hover:text-gray-500 focus:outline-hidden focus:text-gray-500 dark:text-neutral-200 dark:hover:text-neutral-400 dark:focus:text-neutral-400"
+                  className="hs-accordion-toggle group pb-3 inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-start text-muted rounded-lg transition hover:text-gray-500 focus:outline-hidden focus:text-muted "
                   aria-expanded={cert.id === 1 ? "true" : "false"}
                   aria-controls={`hs-certification-collapse-${cert.id}`}
                 >
@@ -42,7 +42,7 @@ export default function Certifications() {
                     </span>
                   </div>
                   <svg
-                    className="hs-accordion-active:hidden block shrink-0 size-5 text-gray-600 group-hover:text-gray-500 dark:text-neutral-400"
+                    className="hs-accordion-active:hidden block shrink-0 size-5 text-gray-600 group-hover:text-gray-500 "
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
                     height="24"
@@ -86,12 +86,12 @@ export default function Certifications() {
                         className="rounded-lg w-full shadow-sm"
                       />
                     </div>
-                    <div className="md:w-1/2 text-gray-800 dark:text-neutral-200">
+                    <div className="md:w-1/2 text-muted">
                       <h3 className="font-semibold text-lg mb-2">
                         {cert.title}
                       </h3>
                       <p className="mb-4">{cert.description}</p>
-                      <p className="text-sm text-gray-600 dark:text-neutral-400 mb-4">
+                      <p className="text-sm text-gray-600 mb-4">
                         Issued by {cert.author.name} on {cert.author.date}
                       </p>
                     </div>

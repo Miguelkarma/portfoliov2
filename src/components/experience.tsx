@@ -37,11 +37,11 @@ export default function Experience() {
                   {/* Content */}
                   <div className="ml-8 bg-card backdrop-blur-md p-6 rounded-2xl border border-indigo-500/20 flex-1">
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                      <h3 className="text-2xl font-bold text-white flex items-center gap-2 font-display">
-                        <Zap className={`w-5 h-5 text-cyan-300`} />
+                      <h3 className="text-2xl font-bold text-secondary flex items-center gap-2 font-display">
+                        <Zap className={`w-5 h-5 text-logo`} />
                         {exp.role}
                       </h3>
-                      <div className="flex items-center text-teal-400 mt-2 md:mt-0">
+                      <div className="flex items-center text-gray-500 mt-2 md:mt-0">
                         <Calendar className="w-4 h-4 mr-1" />
                         <span>{exp.period}</span>
                       </div>
@@ -49,26 +49,24 @@ export default function Experience() {
 
                     <div className="flex items-center mb-6">
                       <MapPin className="w-4 h-4 text-slate-400 mr-1" />
-                      <span className="text-slate-300">{exp.company}</span>
+                      <span className="text-gray-500">{exp.company}</span>
                     </div>
 
                     <div className="space-y-4">
                       {exp.projects.map((project, i) => (
                         <motion.div
                           key={i}
-                          className="bg-slate-800/50 p-4 rounded-xl border border-slate-700/50 group hover:border-indigo-500/30 transition-colors duration-300"
+                          className="bg-card-foreground p-4 rounded-xl border border-slate-700/50 group hover:border-indigo-500/30 transition-colors duration-300"
                           whileHover={{ x: 5 }}
                           initial={{ opacity: 0, x: -20 }}
                           whileInView={{ opacity: 1, x: 0 }}
                           viewport={{ once: true }}
                           transition={{ duration: 0.3, delay: i * 0.1 + 0.2 }}
                         >
-                          <h4 className="text-lg font-semibold text-white mb-2">
+                          <h4 className="text-lg font-semibold text-muted mb-2">
                             {project.title}
                           </h4>
-                          <p className="text-slate-300">
-                            {project.description}
-                          </p>
+                          <p className="text-muted">{project.description}</p>
                         </motion.div>
                       ))}
                     </div>

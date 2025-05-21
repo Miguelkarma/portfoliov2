@@ -289,6 +289,59 @@ export const contactInfo = {
   ctaButton: {
     text: "Send Email",
     link: "https://mail.google.com/mail/?view=cm&fs=1&to=santos.p.miguel46@gmail.com",
-    icon: "Mail", // This corresponds to the Lucide React icon
+    icon: "Mail",
   },
 };
+
+export const aboutMeInfo = {
+  title: "About Me",
+  paragraphs: [
+    "I'm a web developer passionate about building real-world applications. My journey into web development began with curiosity and the drive to solve problems through code — and it's been an exciting learning experience ever since.",
+    "Over time, I've worked on several personal and academic projects, including an IT Equipment Asset Management system and a Veterinary Clinic Management app. These projects helped me gain hands-on experience in both front-end and back-end development.",
+    "My current focus is on developing modern, responsive web apps using React, Firebase, and Tailwind CSS. I'm also exploring new technologies like TypeScript and external APIs to expand my skills and build more advanced features.",
+  ],
+  highlights: [
+    { text: "IT Equipment Asset Management system", highlight: true },
+    { text: "Veterinary Clinic Management app", highlight: true },
+    { text: "React", highlight: true },
+    { text: "Firebase", highlight: true },
+    { text: "Tailwind CSS", highlight: true },
+    { text: "TypeScript", highlight: true },
+  ],
+  skillsSection: {
+    title: "Skills & Technologies",
+    categories: [
+      {
+        name: "Languages",
+        skills: skills.languages,
+      },
+      {
+        name: "Frontend",
+        skills: skills.frontend,
+      },
+      {
+        name: "Backend",
+        skills: skills.backend,
+      },
+      {
+        name: "Tools",
+        skills: skills.tools,
+      },
+    ],
+  },
+  profileImage: {
+    src: "/assets/profile.jpg",
+    alt: "Profile",
+    browser: {
+      url: "www.miguelkarma.com",
+    },
+  },
+};
+export const educationData = [
+  {
+    degree: "Bachelor of Science in Information Technology",
+    institution: "College of The Immaculate Conception",
+    period: "2021-2025",
+    description: "Specialized in Web Development and Cloud.",
+  },
+];
