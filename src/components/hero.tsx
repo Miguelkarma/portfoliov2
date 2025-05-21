@@ -1,6 +1,26 @@
 import HeroButton from "@/components/ui/get-started-btn";
+import { Download } from "lucide-react";
+import resumePdf from "@/assets/resume.pdf";
 
 export default function HeroSection() {
+  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+
+    const href = e.currentTarget.getAttribute("href");
+    if (!href) return;
+
+    const targetId = href.replace("#", "");
+    const targetElement = document.getElementById(targetId);
+
+    if (targetElement) {
+      targetElement.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+
+      window.history.pushState(null, "", href);
+    }
+  };
   return (
     <>
       <main id="home">
@@ -26,8 +46,19 @@ export default function HeroSection() {
                 </p>
                 <div className="flex flex-wrap items-center gap-4 z-30 sm:w-max sm:flex-nowrap mx-auto lg:mx-0">
                   <HeroButton className="px-5 h-12 flex items-center sm:w-max w-full justify-center text-primary-foreground rounded-lg ease-linear transition hover:opacity-90">
-                    Explore My Work
+                    <a href="#about-me" onClick={handleSmoothScroll}>
+                      Explore
+                    </a>
                   </HeroButton>
+
+                  <a
+                    href={resumePdf}
+                    download
+                    className="text-lg h-12 flex items-center sm:w-max w-full justify-center text-primary rounded-lg ease-linear transition hover:opacity-90"
+                  >
+                    <Download className="mr-2" />
+                    Resume
+                  </a>
                 </div>
               </div>
 
